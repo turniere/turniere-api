@@ -1,0 +1,234 @@
+openapi: 3.0.0
+info:
+  title: Turniere
+  description: Turniere API
+  version: 0.1.0
+servers:
+  - url: https://api.turnie.re/
+tags:
+  - name: users
+    description: User management
+  - name: tournaments
+    description: Tournament management
+  - name: matches
+    description: Match management
+paths:
+  /users:
+    post:
+      tags: [users]
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        200:
+          description: Created user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  /users/login:
+    post:
+      tags: [users]
+      summary: Login user to obtain JWT token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  example: alice
+                password:
+                  type: string
+                  example: "123456"
+      responses:
+        200:
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+        401:
+          description: Wrong credentials
+  /users/{username}:
+    get:
+      tags: [users]
+      summary: Obtain user information
+      responses:
+        200:
+          description: User information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        404:
+          $ref: '#/components/responses/NotFoundError'
+    put:
+      tags: [users]
+      summary: Update user information
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        200:
+          $ref: '#/components/responses/Success'
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        404:
+          $ref: '#/components/responses/NotFoundError'
+    delete:
+      tags: [users]
+      summary: Delete a user
+      responses:
+        200:
+          $ref: '#/components/responses/Success'
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        404:
+          $ref: '#/components/responses/NotFoundError'
+  /tournaments:
+    post:
+      tags: [tournaments]
+      summary: Create a new tournament
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tournament'
+      responses:
+        200:
+          description: Created tournament object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tournament'
+  /tournaments/{code}:
+    get:
+      tags: [tournaments]
+      summary: Receive a tournament
+      responses:
+        200:
+          description: Tournament
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tournament'
+        404:
+          $ref: '#/components/responses/NotFoundError'
+    put:
+      tags: [tournaments]
+      summary: Update a tournament
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tournament'
+      responses:
+        200:
+          description: Updated tournament
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tournament'
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        404:
+          $ref: '#/components/responses/NotFoundError'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        username:
+          type: string
+        email:
+          type: string
+        password:
+          writeOnly: true
+          type: string
+    Tournament:
+      type: object
+      properties:
+        code:
+          readOnly: true
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        teams:
+          readOnly: true
+          type: array
+          items:
+            $ref: '#/components/schemas/Team'
+        team_names:
+          writeOnly: true
+          type: array
+          items:
+            type: string
+        stages:
+          readOnly: true
+          type: array
+          items:
+            $ref: '#/components/schemas/Stage'
+    Team:
+      type: object
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        name:
+          type: string
+    Stage:
+      type: object
+      properties:
+        level:
+          type: integer
+        matches:
+          type: array
+          items:
+            $ref: '#/components/schemas/Match'
+    Match:
+      type: object
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        team1:
+          $ref: '#/components/schemas/Team'
+        team2:
+          $ref: '#/components/schemas/Team'
+        score1:
+          type: integer
+        score2:
+          type: integer
+  responses:
+    Success:
+      description: Success
+    UnauthorizedError:
+      description: Access token missing or invalid
+    NotFoundError:
+      description: Object not found
+security:
+  - bearerAuth: []
