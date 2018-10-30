@@ -57,6 +57,8 @@ paths:
                 properties:
                   token:
                     type: string
+        400:
+          description: E-Mail is not verified
         401:
           description: Wrong credentials
   /users/{username}:
