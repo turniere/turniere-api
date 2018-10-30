@@ -137,6 +137,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Tournament'
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
         404:
           $ref: '#/components/responses/NotFoundError'
     put:
