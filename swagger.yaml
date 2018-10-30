@@ -109,7 +109,16 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Tournament'
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                team_names:
+                  type: array
+                  items:
+                    type: string
       responses:
         200:
           description: Created tournament object
@@ -184,11 +193,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Team'
-        team_names:
-          writeOnly: true
-          type: array
-          items:
-            type: string
         stages:
           readOnly: true
           type: array
