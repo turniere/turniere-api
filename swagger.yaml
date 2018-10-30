@@ -12,6 +12,8 @@ tags:
     description: Tournament management
   - name: matches
     description: Match management
+  - name: teams
+    description: Team management
 paths:
   /users:
     post:
@@ -160,6 +162,41 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         404:
           $ref: '#/components/responses/NotFoundError'
+  /teams/{id}:
+    get:
+      tags: [teams]
+      summary: Receive a team
+      responses:
+        200:
+          description: Team
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        404:
+          $ref: '#/components/responses/NotFoundError'
+    put:
+      tags: [teams]
+      summary: Update a team
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Team'
+      responses:
+        200:
+          description: Updated team
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        404:
+          $ref: '#/components/responses/NotFoundError'
+
 components:
   securitySchemes:
     bearerAuth:
