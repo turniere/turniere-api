@@ -295,8 +295,10 @@ components:
           readOnly: true
           type: integer
         team1:
+          readOnly: true
           $ref: '#/components/schemas/Team'
         team2:
+          readOnly: true
           $ref: '#/components/schemas/Team'
         score1:
           type: integer
