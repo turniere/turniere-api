@@ -31,11 +31,17 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  data:
+                    $ref: '#/components/schemas/User'
   /users/sign_in:
     post:
       tags: [users]
-      summary: Login user to obtain JWT token
+      summary: Login user to obtain token
       requestBody:
         required: true
         content:
@@ -43,9 +49,9 @@ paths:
             schema:
               type: object
               properties:
-                username:
+                email:
                   type: string
-                  example: alice
+                  example: alice@example.org
                 password:
                   type: string
                   example: "123456"
@@ -57,12 +63,48 @@ paths:
               schema:
                 type: object
                 properties:
-                  token:
-                    type: string
-        400:
-          description: E-Mail is not verified
+                  data:
+                    $ref: '#/components/schemas/User'
+          headers:
+            access-token:
+              description: Access token for the next request
+              schema:
+                type: string
+            token-type:
+              description: Type of the given token
+              schema:
+                type: string
+                example: Bearer
+            client:
+              description: Client used for authentication
+              schema:
+                type: string
+                example: desktop
+            uid:
+              description: User id
+              schema:
+                type: string
+                example: alice@example.org
+            expiry:
+              description: Time of expiry of the token
+              schema:
+                type: string
+                example: 99999
         401:
           description: Wrong credentials
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                      example: Invalid login credentials. Please try again.
   /users/{username}:
     get:
       tags: [users]
@@ -236,7 +278,8 @@ components:
     bearerAuth:
       type: http
       scheme: bearer
-      bearerFormat: JWT
+      in: header
+      description: https://devise-token-auth.gitbook.io/devise-token-auth/conceptual
   schemas:
     User:
       type: object
