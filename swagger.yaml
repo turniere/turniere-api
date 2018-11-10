@@ -32,7 +32,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
-  /users/login:
+  /users/sign_in:
     post:
       tags: [users]
       summary: Login user to obtain JWT token
