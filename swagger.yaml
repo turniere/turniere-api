@@ -347,6 +347,8 @@ components:
           type: integer
         score2:
           type: integer
+        live:
+          type: boolean
   responses:
     Success:
       description: Success
