@@ -38,6 +38,18 @@ paths:
                     example: success
                   data:
                     $ref: '#/components/schemas/User'
+    put:
+      tags: [users]
+      summary: Edit the currently signed in user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+    delete:
+      tags: [users]
+      summary: Delete currently signed in user
   /users/sign_in:
     post:
       tags: [users]
@@ -105,46 +117,6 @@ paths:
                     items:
                       type: string
                       example: Invalid login credentials. Please try again.
-  /users/{username}:
-    get:
-      tags: [users]
-      summary: Obtain user information
-      responses:
-        200:
-          description: User information
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
-        401:
-          $ref: '#/components/responses/UnauthorizedError'
-        404:
-          $ref: '#/components/responses/NotFoundError'
-    put:
-      tags: [users]
-      summary: Update user information
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/User'
-      responses:
-        200:
-          $ref: '#/components/responses/Success'
-        401:
-          $ref: '#/components/responses/UnauthorizedError'
-        404:
-          $ref: '#/components/responses/NotFoundError'
-    delete:
-      tags: [users]
-      summary: Delete a user
-      responses:
-        200:
-          $ref: '#/components/responses/Success'
-        401:
-          $ref: '#/components/responses/UnauthorizedError'
-        404:
-          $ref: '#/components/responses/NotFoundError'
   /tournaments:
     post:
       tags: [tournaments]
