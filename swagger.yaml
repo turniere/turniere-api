@@ -191,25 +191,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         404:
           $ref: '#/components/responses/NotFoundError'
-    put:
-      tags: [matches]
-      summary: Update a match
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Match'
-      responses:
-        200:
-          description: Updated match
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Match'
-        401:
-          $ref: '#/components/responses/UnauthorizedError'
-        404:
-          $ref: '#/components/responses/NotFoundError'
   /teams/{id}:
     get:
       tags: [teams]
