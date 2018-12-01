@@ -357,3 +357,63 @@ DELETE /tournaments/1 HTTP/1.1
 ```http
 HTTP/1.1 204 No Content
 ```
+
+# Teams
+
+## Show a team
+
+```http
+GET /teams/1 HTTP/1.1
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "data": {
+    "attributes": {
+      "name": "Murphy"
+    },
+    "id": "1",
+    "type": "teams"
+  }
+}
+```
+
+## Update a team
+
+```http
+PATCH /teams/1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "data": {
+    "attributes": {
+      "name": "Name01"
+    }
+  }
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "data": {
+    "id": "1",
+    "type": "teams",
+    "attributes": {
+      "name": "Name01"
+    }
+  }
+}
+```
+
+### Parameters
+
+Parameter   | Description
+---------   | -----------
+name        | Name of the team
+
