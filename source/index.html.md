@@ -152,7 +152,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 type      | public  | Type of tournaments to include in the list (either `public` or `private`)
 
-## Get a tournament
+## Show a tournament
 
 ```http
 GET /tournaments/1 HTTP/1.1
