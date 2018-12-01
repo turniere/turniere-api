@@ -5,7 +5,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - http
 
 toc_footers:
-  - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
+  - <a href='https://github.com/turniere/turniere-api'>Edit on GitHub</a>
 
 includes:
   - errors
