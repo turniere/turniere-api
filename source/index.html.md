@@ -417,3 +417,186 @@ Parameter   | Description
 ---------   | -----------
 name        | Name of the team
 
+# Matches
+
+## Show a match
+
+```http
+GET /matches/1 HTTP/1.1
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "data": {
+    "attributes": {
+      "state": "single_team"
+    },
+    "id": "1",
+    "relationships": {
+      "match-scores": {
+        "data": [
+          {
+            "id": "1",
+            "type": "match-scores"
+          },
+          {
+            "id": "2",
+            "type": "match-scores"
+          }
+        ]
+      }
+    },
+    "type": "matches"
+  },
+  "included": [
+    {
+      "attributes": {
+        "points": 0
+      },
+      "id": "1",
+      "relationships": {
+        "match": {
+          "data": {
+            "id": "1",
+            "type": "matches"
+          }
+        },
+        "team": {
+          "data": {
+            "id": "1",
+            "type": "teams"
+          }
+        }
+      },
+      "type": "match-scores"
+    },
+    {
+      "attributes": {
+        "points": 1
+      },
+      "id": "2",
+      "relationships": {
+        "match": {
+          "data": {
+            "id": "1",
+            "type": "matches"
+          }
+        },
+        "team": {
+          "data": {
+            "id": "2",
+            "type": "teams"
+          }
+        }
+      },
+      "type": "match-scores"
+    },
+    {
+      "attributes": {
+        "name": "Casey"
+      },
+      "id": "1",
+      "type": "teams"
+    },
+    {
+      "attributes": {
+        "name": "Rex"
+      },
+      "id": "2",
+      "type": "teams"
+    }
+  ]
+}
+```
+
+Matches belonging to a private tournament can only be viewed by the owner of that tournament.
+
+# Match Scores
+
+## Show a match score
+
+```http
+GET /match_scores/1 HTTP/1.1
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "data": {
+    "attributes": {
+      "points": 0
+    },
+    "id": "1",
+    "relationships": {
+      "match": {
+        "data": {
+          "id": "1",
+          "type": "matches"
+        }
+      },
+      "team": {
+        "data": {
+          "id": "1",
+          "type": "teams"
+        }
+      }
+    },
+    "type": "match-scores"
+  }
+}
+```
+
+## Update a match score
+
+```http
+PATCH /match_scores/1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "data": {
+    "attributes": {
+      "points": 42
+    }
+  }
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "data": {
+    "id": "1",
+    "type": "match-scores",
+    "attributes": {
+      "points": 42
+    },
+    "relationships": {
+      "team": {
+        "data": {
+          "id": "1",
+          "type": "teams"
+        }
+      },
+      "match": {
+        "data": {
+          "id": "1",
+          "type": "matches"
+        }
+      }
+    }
+  }
+}
+```
+
+### Parameters
+
+Parameter | Description
+--------- | -----------
+points    | Updated points
