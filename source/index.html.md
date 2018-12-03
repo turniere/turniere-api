@@ -114,6 +114,52 @@ Content-Type: application/json
 
 Sign out a user and invalidate the access token.
 
+## Register
+
+```http
+POST /users HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "jonny3210@example.com",
+  "username": "jonny3210",
+  "password": "123456"
+}
+
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "status": "success",
+  "data": {
+    "id": 1,
+    "email": "mail@example.com",
+    "provider": "email",
+    "username": "user",
+    "uid": "mail@example.com",
+    "allow_password_change": false,
+    "type": "user"
+  }
+}
+```
+
+Register a user.
+
+<aside class="notice">
+The response headers will include authentication headers as well.
+</aside>
+
+### Parameters
+
+Parameter | Description
+--------- | -----------
+email     | E-Mail of the new user
+username  | Username of the new user
+password  | Password of the new user
+
 # Tournaments
 
 ## List tournaments
