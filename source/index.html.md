@@ -600,3 +600,274 @@ Content-Type: application/json
 Parameter | Description
 --------- | -----------
 points    | Updated points
+
+# Stages
+
+## Show a playoff stage
+
+```http
+GET /stages/1 HTTP/1.1
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "data": {
+    "attributes": {
+      "level": null
+    },
+    "id": "1",
+    "relationships": {
+      "groups": {
+        "data": []
+      },
+      "matches": {
+        "data": [
+          {
+            "id": "1",
+            "type": "matches"
+          }
+        ]
+      }
+    },
+    "type": "stages"
+  },
+  "included": [
+    {
+      "attributes": {
+        "state": "single_team"
+      },
+      "id": "1",
+      "relationships": {
+        "match-scores": {
+          "data": [
+            {
+              "id": "1",
+              "type": "match-scores"
+            },
+            {
+              "id": "2",
+              "type": "match-scores"
+            }
+          ]
+        }
+      },
+      "type": "matches"
+    },
+    {
+      "attributes": {
+        "points": 0
+      },
+      "id": "1",
+      "relationships": {
+        "team": {
+          "data": {
+            "id": "1",
+            "type": "teams"
+          }
+        }
+      },
+      "type": "match-scores"
+    },
+    {
+      "attributes": {
+        "points": 1
+      },
+      "id": "2",
+      "relationships": {
+        "team": {
+          "data": {
+            "id": "2",
+            "type": "teams"
+          }
+        }
+      },
+      "type": "match-scores"
+    },
+    {
+      "attributes": {
+        "name": "Rosie"
+      },
+      "id": "1",
+      "type": "teams"
+    },
+    {
+      "attributes": {
+        "name": "Ginger"
+      },
+      "id": "2",
+      "type": "teams"
+    }
+  ]
+}
+```
+
+The response will include all matches, match scores and teams required for displaying this stage.
+
+## Show a group stage
+
+```http
+GET /stages/1 HTTP/1.1
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "data": {
+    "attributes": {
+      "level": null
+    },
+    "id": "1",
+    "relationships": {
+      "groups": {
+        "data": [
+          {
+            "id": "1",
+            "type": "groups"
+          }
+        ]
+      },
+      "matches": {
+        "data": []
+      }
+    },
+    "type": "stages"
+  },
+  "included": [
+    {
+      "attributes": {
+        "number": null
+      },
+      "id": "1",
+      "relationships": {
+        "group-scores": {
+          "data": [
+            {
+              "id": "1",
+              "type": "group-scores"
+            },
+            {
+              "id": "2",
+              "type": "group-scores"
+            }
+          ]
+        },
+        "matches": {
+          "data": [
+            {
+              "id": "1",
+              "type": "matches"
+            }
+          ]
+        }
+      },
+      "type": "groups"
+    },
+    {
+      "attributes": {
+        "state": "single_team"
+      },
+      "id": "1",
+      "relationships": {
+        "match-scores": {
+          "data": [
+            {
+              "id": "1",
+              "type": "match-scores"
+            },
+            {
+              "id": "2",
+              "type": "match-scores"
+            }
+          ]
+        }
+      },
+      "type": "matches"
+    },
+    {
+      "attributes": {
+        "points": 0
+      },
+      "id": "1",
+      "relationships": {
+        "team": {
+          "data": {
+            "id": "1",
+            "type": "teams"
+          }
+        }
+      },
+      "type": "match-scores"
+    },
+    {
+      "attributes": {
+        "points": 1
+      },
+      "id": "2",
+      "relationships": {
+        "team": {
+          "data": {
+            "id": "2",
+            "type": "teams"
+          }
+        }
+      },
+      "type": "match-scores"
+    },
+    {
+      "attributes": {
+        "name": "Gracie"
+      },
+      "id": "1",
+      "type": "teams"
+    },
+    {
+      "attributes": {
+        "name": "Misty"
+      },
+      "id": "2",
+      "type": "teams"
+    },
+    {
+      "attributes": {
+        "group-points": 0,
+        "received-points": 0,
+        "scored-points": 0
+      },
+      "id": "1",
+      "relationships": {
+        "team": {
+          "data": {
+            "id": "1",
+            "type": "teams"
+          }
+        }
+      },
+      "type": "group-scores"
+    },
+    {
+      "attributes": {
+        "group-points": 0,
+        "received-points": 0,
+        "scored-points": 0
+      },
+      "id": "2",
+      "relationships": {
+        "team": {
+          "data": {
+            "id": "2",
+            "type": "teams"
+          }
+        }
+      },
+      "type": "group-scores"
+    }
+  ]
+}
+```
+
+The response will include all groups, matches, match scores and teams required for displaying this stage.
