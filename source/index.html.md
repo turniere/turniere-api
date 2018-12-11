@@ -170,20 +170,15 @@ GET /tournaments HTTP/1.1
 HTTP/1.1 200 OK
 Content-Type: application/json
 
-{
-  "data": [
-    {
-      "id": "1",
-      "type": "tournaments",
-      "attributes": {
-        "name": "Abby",
-        "code": "9f94ae",
-        "description": "Lorem ipsum dolor sit",
-        "public": true
-      }
-    }
-  ]
-}
+[
+  {
+    "code": "184c4a",
+    "id": 1,
+    "name": "Shadow",
+    "public": true
+  }
+]
+
 ```
 
 List all existing tournaments.
@@ -207,39 +202,114 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "data": {
-    "id": "1",
-    "type": "tournaments",
-    "attributes": {
-      "name": "Abby",
-      "code": "9f94ae",
-      "description": "Lorem ipsum dolor sit",
-      "public": true
+  "code": "184c4a",
+  "description": null,
+  "id": 1,
+  "name": "Shadow",
+  "owner_username": "eric_kunze",
+  "public": true,
+  "stages": [
+    {
+      "groups": [],
+      "id": 1,
+      "level": null,
+      "matches": [
+        {
+          "id": 1,
+          "match_scores": [
+            {
+              "id": 1,
+              "points": 0,
+              "team": {
+                "id": 1,
+                "name": "Gracie"
+              }
+            },
+            {
+              "id": 2,
+              "points": 1,
+              "team": {
+                "id": 2,
+                "name": "Misty"
+              }
+            }
+          ],
+          "position": null,
+          "state": "single_team"
+        }
+      ]
     },
-    "relationships": {
-      "teams": {
-        "data": [
-          {
-            "id": "1",
-            "type": "teams"
-          },
-          {
-            "id": "2",
-            "type": "teams"
-          }
-        ]
-      },
-      "stages": {
-        "data": [
-          {
-            "id": "1",
-            "type": "stages"
-          }
-        ]
-      }
+    {
+      "groups": [
+        {
+          "group_scores": [
+            {
+              "group_points": 0,
+              "id": 1,
+              "received_points": 0,
+              "scored_points": 0,
+              "team": {
+                "id": 1,
+                "name": "Gracie"
+              }
+            },
+            {
+              "group_points": 0,
+              "id": 2,
+              "received_points": 0,
+              "scored_points": 0,
+              "team": {
+                "id": 2,
+                "name": "Misty"
+              }
+            }
+          ],
+          "id": 1,
+          "matches": [
+            {
+              "id": 2,
+              "match_scores": [
+                {
+                  "id": 3,
+                  "points": 0,
+                  "team": {
+                    "id": 1,
+                    "name": "Gracie"
+                  }
+                },
+                {
+                  "id": 4,
+                  "points": 1,
+                  "team": {
+                    "id": 2,
+                    "name": "Misty"
+                  }
+                }
+              ],
+              "position": null,
+              "state": "single_team"
+            }
+          ],
+          "number": null
+        }
+      ],
+      "id": 2,
+      "level": null,
+      "matches": []
     }
-  }
+  ],
+  "teams": [
+    {
+      "id": 1,
+      "name": "Gracie"
+    },
+    {
+      "id": 2,
+      "name": "Misty"
+    }
+  ]
 }
+
 ```
 
 Request a detailed Tournament object.
@@ -247,6 +317,10 @@ This will include all available attributes and relations.
 Public tournaments can be requested by anyone, private tournaments only by their owner.
 
 ## Create a tournament
+
+<aside class="warning">
+This method is currently not implemented and the documentation below refers to an outdated version.
+</aside>
 
 ```http
 POST /tournaments HTTP/1.1
@@ -322,23 +396,9 @@ PATCH /tournaments/1 HTTP/1.1
 Content-Type: application/json
 
 {
-  "data": {
-    "attributes": {
-      "name": "New name",
-      "description": "New description",
-      "public": false
-    },
-    "relationships": {
-      "teams": {
-        "data": [
-          {
-            "id": "1",
-            "type": "teams"
-          }
-        ]
-      }
-    }
-  }
+  "name": "New name",
+  "description": "New description",
+  "public": false
 }
 ```
 
@@ -347,40 +407,36 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "data": {
-    "id": "1",
-    "type": "tournaments",
-    "attributes": {
-      "name": "New name",
-      "code": "9f94ae",
-      "description": "New description",
-      "public": false
+  "id": 1,
+  "name": "Abby222",
+  "code": "184c4a",
+  "public": false,
+  "description": "Lorem ipsum dolor sit222",
+  "owner_username": "jonny321",
+  "stages": [
+    {
+      "id": 1,
+      "level": null
     },
-    "relationships": {
-      "teams": {
-        "data": [
-          {
-            "id": "1",
-            "type": "teams"
-          }
-        ]
-      },
-      "stages": {
-        "data": [
-          {
-            "id": "1",
-            "type": "stages"
-          }
-        ]
-      }
+    {
+      "id": 2,
+      "level": null
     }
-  }
+  ],
+  "teams": [
+    {
+      "id": 1,
+      "name": "Gracie"
+    },
+    {
+      "id": 2,
+      "name": "Misty"
+    }
+  ]
 }
 ```
 
-Update tournament attributes and/or relationships.
-
-Updating relationships will replace them completely.
+Update tournament attributes.
 
 ### Parameters
 
@@ -415,13 +471,8 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "data": {
-    "attributes": {
-      "name": "Murphy"
-    },
-    "id": "1",
-    "type": "teams"
-  }
+  "id": 1,
+  "name": "Gracie"
 }
 ```
 
@@ -432,11 +483,7 @@ PATCH /teams/1 HTTP/1.1
 Content-Type: application/json
 
 {
-  "data": {
-    "attributes": {
-      "name": "Name01"
-    }
-  }
+  "name": "New name"
 }
 ```
 
@@ -445,13 +492,8 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "data": {
-    "id": "1",
-    "type": "teams",
-    "attributes": {
-      "name": "Name01"
-    }
-  }
+  "id": 1,
+  "name": "New name"
 }
 ```
 
@@ -474,85 +516,27 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "data": {
-    "attributes": {
-      "state": "single_team"
-    },
-    "id": "1",
-    "relationships": {
-      "match-scores": {
-        "data": [
-          {
-            "id": "1",
-            "type": "match-scores"
-          },
-          {
-            "id": "2",
-            "type": "match-scores"
-          }
-        ]
+  "id": 1,
+  "match_scores": [
+    {
+      "id": 1,
+      "points": 0,
+      "team": {
+        "id": 1,
+        "name": "Bubba"
       }
     },
-    "type": "matches"
-  },
-  "included": [
     {
-      "attributes": {
-        "points": 0
-      },
-      "id": "1",
-      "relationships": {
-        "match": {
-          "data": {
-            "id": "1",
-            "type": "matches"
-          }
-        },
-        "team": {
-          "data": {
-            "id": "1",
-            "type": "teams"
-          }
-        }
-      },
-      "type": "match-scores"
-    },
-    {
-      "attributes": {
-        "points": 1
-      },
-      "id": "2",
-      "relationships": {
-        "match": {
-          "data": {
-            "id": "1",
-            "type": "matches"
-          }
-        },
-        "team": {
-          "data": {
-            "id": "2",
-            "type": "teams"
-          }
-        }
-      },
-      "type": "match-scores"
-    },
-    {
-      "attributes": {
-        "name": "Casey"
-      },
-      "id": "1",
-      "type": "teams"
-    },
-    {
-      "attributes": {
-        "name": "Rex"
-      },
-      "id": "2",
-      "type": "teams"
+      "id": 2,
+      "points": 1,
+      "team": {
+        "id": 2,
+        "name": "Misty"
+      }
     }
-  ]
+  ],
+  "position": 0,
+  "state": "not_started"
 }
 ```
 
@@ -571,27 +555,12 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "data": {
-    "attributes": {
-      "points": 0
-    },
-    "id": "1",
-    "relationships": {
-      "match": {
-        "data": {
-          "id": "1",
-          "type": "matches"
-        }
-      },
-      "team": {
-        "data": {
-          "id": "1",
-          "type": "teams"
-        }
-      }
-    },
-    "type": "match-scores"
-  }
+    "id": 1,
+    "points": 0,
+    "team": {
+        "id": 1,
+        "name": "Bubba"
+    }
 }
 ```
 
@@ -602,11 +571,7 @@ PATCH /match_scores/1 HTTP/1.1
 Content-Type: application/json
 
 {
-  "data": {
-    "attributes": {
-      "points": 42
-    }
-  }
+  "points": 100,
 }
 ```
 
@@ -615,26 +580,11 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "data": {
-    "id": "1",
-    "type": "match-scores",
-    "attributes": {
-      "points": 42
-    },
-    "relationships": {
-      "team": {
-        "data": {
-          "id": "1",
-          "type": "teams"
-        }
-      },
-      "match": {
-        "data": {
-          "id": "1",
-          "type": "matches"
-        }
-      }
-    }
+  "id": 1,
+  "points": 100,
+  "team": {
+    "id": 1,
+    "name": "Bubba"
   }
 }
 ```
@@ -646,6 +596,10 @@ Parameter | Description
 points    | Updated points
 
 # Stages
+
+<aside class="warning">
+This resource is currently not implemented and the documentation below refers to an outdated version.
+</aside>
 
 ## Show a playoff stage
 
