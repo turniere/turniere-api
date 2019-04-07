@@ -318,32 +318,22 @@ Public tournaments can be requested by anyone, private tournaments only by their
 
 ## Create a tournament
 
-<aside class="warning">
-This method is currently not implemented and the documentation below refers to an outdated version.
-</aside>
-
 ```http
 POST /tournaments HTTP/1.1
 Content-Type: application/json
 
 {
-  "data": {
-    "attributes": {
-      "name": "Tournament 01",
-      "description": "An interesting description",
-      "public": false
+  "name": "Tournament 01",
+  "description": "An interesting description",
+  "public": false,
+  "teams": [
+    {
+      "id": 1
     },
-    "relationships": {
-      "teams": {
-        "data": [
-          {
-            "type": "teams",
-            "id": "1"
-          }
-        ]
-      }
+    {
+      "id": 2
     }
-  }
+  ]
 }
 ```
 
@@ -351,42 +341,20 @@ Content-Type: application/json
 HTTP/1.1 200 OK
 Content-Type: application/json
 
-{
-  "data": {
-    "id": "1",
-    "type": "tournaments",
-    "attributes": {
-      "name": "Tournament 01",
-      "code": "91d623",
-      "description": "An interesting description",
-      "public": false
-    },
-    "relationships": {
-      "teams": {
-        "data": [
-          {
-            "id": "1",
-            "type": "teams"
-          }
-        ]
-      },
-      "stages": {
-        "data": []
-      }
-    }
-  }
-}
+TBD
 ```
+
+Create a new tournament.
+
+This will associate the given teams to a new tournament object and generate a playoff stage.
 
 ### Parameters
 
-All parameters are optional, therefore one request can be used to update either all/some or no parameters.
-
-Parameter   | Description
----------   | -----------
-name        | Name of the tournament
-description | Description of the tournament
-public      | Whether the tournament is public (`true` or `false`)
+Parameter   | Description | Default
+---------   | ----------- | -------
+name        | Name of the tournament |
+description | Description of the tournament | `''`
+public      | Whether the tournament is public (`true` or `false`) | `true`
 
 
 ## Update a tournament
@@ -440,7 +408,7 @@ Update tournament attributes.
 
 ### Parameters
 
-All parameters are optional, therefore one request can be used to update either all/some or no parameters.
+All parameters are optional, therefore one request can be used to update either all, some or no parameters.
 
 Parameter   | Description
 ---------   | -----------
