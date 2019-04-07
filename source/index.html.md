@@ -14,10 +14,8 @@ search: true
 ---
 
 # Introduction
-
-Welcome to the tournament API! You can use our API to access tournament API endpoints, which can get information on various tournaments with cats, kittens, and breeds in our database.
-
-Request bodies and responses are formatted according to the [JSON:API](https://jsonapi.org/) specification.
+Welcome to the Turnie.re API documentation!
+This document will describe all available endpoints and possible responses.
 
 # Authentication
 
@@ -37,15 +35,17 @@ expiry: 1544795676
 uid: mail@example.com
 ```
 
-The API uses [devise-token-auth](https://devise-token-auth.gitbook.io/devise-token-auth/) for authentication.
+The response of a successful [sign in request](#sign-in) will return an initial `access-token` and `client` header.
+Those and the `uid` header (set to the email of the logged in user) have to be included in every request to an authenticated path.
 
-Therefore after signing in and receiving an `access-token` and `client` token in the header those values have to be included in each request.
+The `access-token` is valid until `expiry` (unix timestamp) or **one** request.
+Every request will contain a new `access-token` for the next request.
 
-The returned `access-token` is valid for one request and a new one will be returned on each request.
+For implementation details and more examples check out [devise-token-auth](https://devise-token-auth.gitbook.io/devise-token-auth/).
 
 <aside class="notice">
-Authentication is required for all update methods<br>
-Their headers are omitted from all example requests on this page for brevitiy, though.
+Authentication is required for all update and create methods.<br>
+Even though the authentication headers are omitted from all examples, they are still required.
 </aside>
 
 # Users
