@@ -338,6 +338,31 @@ Content-Type: application/json
 ```
 
 ```http
+POST /tournaments HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Tournament 01",
+  "description": "An interesting description",
+  "public": false,
+  "teams": [
+    {
+      "name": "Name 01"
+    },
+    {
+      "name": "Name 02"
+    },
+    {
+      "name": "Name 03"
+    },
+    {
+      "name": "Name 04"
+    }
+  ]
+}
+```
+
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -346,13 +371,16 @@ TBD
 
 Create a new tournament.
 
-This will associate the given teams to a new tournament object and generate a playoff stage.
+This will associate the given teams to a new tournament object or create them and generate a playoff stage.
+
+You can either reuse teams from an existing tournament (first example) or create new teams (second example).
 
 ### Parameters
 
 Parameter   | Description | Default
 ---------   | ----------- | -------
 name        | Name of the tournament |
+teams       | Teams to create/add to the tournament |
 description | Description of the tournament | `''`
 public      | Whether the tournament is public (`true` or `false`) | `true`
 
