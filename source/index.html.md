@@ -71,16 +71,15 @@ expiry: 1544795676
 uid: mail@example.com
 
 {
-  "data": {
-    "id": 1,
-    "email": "mail@example.com",
-    "provider": "email",
-    "username": "user",
-    "uid": "mail@example.com",
-    "allow_password_change": true,
-    "type": "user"
-  }
+  "id": 1,
+  "email": "mail@example.com",
+  "provider": "email",
+  "username": "user",
+  "uid": "mail@example.com",
+  "allow_password_change": true,
+  "type": "user"
 }
+
 ```
 
 Sign a user in to obtain an access token.
@@ -131,17 +130,15 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "status": "success",
-  "data": {
-    "id": 1,
-    "email": "mail@example.com",
-    "provider": "email",
-    "username": "user",
-    "uid": "mail@example.com",
-    "allow_password_change": false,
-    "type": "user"
-  }
+  "id": 1,
+  "email": "mail@example.com",
+  "provider": "email",
+  "username": "user",
+  "uid": "mail@example.com",
+  "allow_password_change": false,
+  "type": "user"
 }
+
 ```
 
 Register a user.
