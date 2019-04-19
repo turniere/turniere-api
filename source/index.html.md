@@ -314,6 +314,7 @@ This will include all available attributes and relations.
 Public tournaments can be requested by anyone, private tournaments only by their owner.
 
 ## Create a tournament
+### Without group stage
 
 ```http
 POST /tournaments HTTP/1.1
@@ -372,14 +373,100 @@ This will associate the given teams to a new tournament object or create them an
 
 You can either reuse teams from an existing tournament (first example) or create new teams (second example).
 
-### Parameters
+#### Parameters
 
 Parameter   | Description | Default
 ---------   | ----------- | -------
 name        | Name of the tournament |
-teams       | Teams to create/add to the tournament |
+teams       | Teams to create/add to the tournament (In case of groupstage add a group identifier to each team, if there is none, everyone will be in one big group) |
 description | Description of the tournament | `''`
 public      | Whether the tournament is public (`true` or `false`) | `true`
+groupstage  | Whether the tournament will start with a group stage (`true` or `false`) | `false`
+
+### With group stage
+
+```http
+POST /tournaments HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Tournament 01",
+  "description": "An interesting description",
+  "public": false,
+  "groupstage": true,
+  "teams": [
+    {
+      "id": "1",
+      "group": 0,
+    },
+    {
+      "id": "2",
+      "group": 0,
+    },
+    {
+      "id": "3",
+      "group": 1,
+    },
+    {
+      "id": "4",
+      "group": 1,
+    },
+  ]
+}
+```
+
+```http
+POST /tournaments HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Tournament 01",
+  "description": "An interesting description",
+  "public": false,
+  "groupstage": true,
+  "teams": [
+    {
+      "id": "1",
+      "group": 0,
+    },
+    {
+      "id": "2",
+      "group": 0,
+    },
+    {
+      "id": "3",
+      "group": 1,
+    },
+    {
+      "id": "4",
+      "group": 1,
+    },
+  ]
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+TBD
+```
+
+Create a new tournament.
+
+This will associate the given teams to a new tournament object or create them and generate a playoff stage.
+
+You can either reuse teams from an existing tournament (first example) or create new teams (second example).
+
+#### Parameters
+
+Parameter   | Description | Default
+---------   | ----------- | -------
+name        | Name of the tournament |
+teams       | Teams to create/add to the tournament (In case of groupstage add a group identifier to each team, if there is none, everyone will be in one big group) |
+description | Description of the tournament | `''`
+public      | Whether the tournament is public (`true` or `false`) | `true`
+groupstage  | Whether the tournament will start with a group stage (`true` or `false`) | `false`
 
 
 ## Update a tournament
