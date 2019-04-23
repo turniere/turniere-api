@@ -378,10 +378,10 @@ You can either reuse teams from an existing tournament (first example) or create
 Parameter   | Description | Default
 ---------   | ----------- | -------
 name        | Name of the tournament |
-teams       | Teams to create/add to the tournament (In case of groupstage add a group identifier to each team, if there is none, everyone will be in one big group) |
+teams       | Teams to create/add to the tournament (In case of group stage add a group identifier to each team, if there is none, everyone will be in one big group) |
 description | Description of the tournament | `''`
 public      | Whether the tournament is public (`true` or `false`) | `true`
-groupstage  | Whether the tournament will start with a group stage (`true` or `false`) | `false`
+group_stage  | Whether the tournament will start with a group stage (`true` or `false`) | `false`
 
 ### With group stage
 
@@ -393,7 +393,7 @@ Content-Type: application/json
   "name": "Tournament 01",
   "description": "An interesting description",
   "public": false,
-  "groupstage": true,
+  "group_stage": true,
   "teams": [
     {
       "id": "1",
@@ -423,7 +423,7 @@ Content-Type: application/json
   "name": "Tournament 01",
   "description": "An interesting description",
   "public": false,
-  "groupstage": true,
+  "group_stage": true,
   "teams": [
     {
       "id": "1",
@@ -463,10 +463,10 @@ You can either reuse teams from an existing tournament (first example) or create
 Parameter   | Description | Default
 ---------   | ----------- | -------
 name        | Name of the tournament |
-teams       | Teams to create/add to the tournament (In case of groupstage add a group identifier to each team, if there is none, everyone will be in one big group) |
+teams       | Teams to create/add to the tournament (In case of group_stage add a group identifier to each team, if there is none, everyone will be in one big group) |
 description | Description of the tournament | `''`
 public      | Whether the tournament is public (`true` or `false`) | `true`
-groupstage  | Whether the tournament will start with a group stage (`true` or `false`) | `false`
+group_stage  | Whether the tournament will start with a group stage (`true` or `false`) | `false`
 
 
 ## Update a tournament
