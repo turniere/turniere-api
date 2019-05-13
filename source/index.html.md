@@ -155,6 +155,41 @@ email     | E-Mail of the new user
 username  | Username of the new user
 password  | Password of the new user
 
+## Update
+
+```http
+PUT /users HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "new@email.com"
+}
+
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": 1,
+  "email": "new@email.com",
+  "provider": "email",
+  "username": "user01",
+  "uid": "new@email.com",
+  "allow_password_change": false,
+  "created_at": "2019-05-13T10:07:21.228Z",
+  "updated_at": "2019-05-13T10:11:38.087Z"
+}
+
+```
+
+### Parameters
+
+Parameter | Description
+----------|------------
+email     | Updated mail address
+
 # Tournaments
 
 ## List tournaments
