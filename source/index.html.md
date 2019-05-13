@@ -349,7 +349,6 @@ This will include all available attributes and relations.
 Public tournaments can be requested by anyone, private tournaments only by their owner.
 
 ## Create a tournament
-### Without group stage
 
 ```http
 POST /tournaments HTTP/1.1
@@ -359,37 +358,25 @@ Content-Type: application/json
   "name": "Tournament 01",
   "description": "An interesting description",
   "public": false,
+  "group_stage": false,
   "teams": [
     {
       "id": 1
     },
-    {
-      "id": 2
-    }
-  ]
-}
-```
-
-```http
-POST /tournaments HTTP/1.1
-Content-Type: application/json
-
-{
-  "name": "Tournament 01",
-  "description": "An interesting description",
-  "public": false,
-  "teams": [
+    /* or */
     {
       "name": "Name 01"
     },
+
+    /* for "group_stage": true */
     {
-      "name": "Name 02"
-    },
+      "id": 1,
+      "group": 1
+    },   
+    /* or */
     {
-      "name": "Name 03"
-    },
-    {
-      "name": "Name 04"
+      "name": "Name 01",
+      "group": 1
     }
   ]
 }
@@ -408,101 +395,17 @@ This will associate the given teams to a new tournament object or create them an
 
 You can either reuse teams from an existing tournament (first example) or create new teams (second example).
 
-#### Parameters
-
-Parameter   | Description | Default
----------   | ----------- | -------
-name        | Name of the tournament |
-teams       | Teams to create/add to the tournament (In case of group stage add a group identifier to each team, if there is none, everyone will be in one big group) |
-description | Description of the tournament | `''`
-public      | Whether the tournament is public (`true` or `false`) | `true`
-group_stage  | Whether the tournament will start with a group stage (`true` or `false`) | `false`
-
-### With group stage
-
-```http
-POST /tournaments HTTP/1.1
-Content-Type: application/json
-
-{
-  "name": "Tournament 01",
-  "description": "An interesting description",
-  "public": false,
-  "group_stage": true,
-  "teams": [
-    {
-      "id": "1",
-      "group": 0,
-    },
-    {
-      "id": "2",
-      "group": 0,
-    },
-    {
-      "id": "3",
-      "group": 1,
-    },
-    {
-      "id": "4",
-      "group": 1,
-    },
-  ]
-}
-```
-
-```http
-POST /tournaments HTTP/1.1
-Content-Type: application/json
-
-{
-  "name": "Tournament 01",
-  "description": "An interesting description",
-  "public": false,
-  "group_stage": true,
-  "teams": [
-    {
-      "id": "1",
-      "group": 0,
-    },
-    {
-      "id": "2",
-      "group": 0,
-    },
-    {
-      "id": "3",
-      "group": 1,
-    },
-    {
-      "id": "4",
-      "group": 1,
-    },
-  ]
-}
-```
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-TBD
-```
-
-Create a new tournament.
-
-This will associate the given teams to a new tournament object or create them and generate a playoff stage.
-
-You can either reuse teams from an existing tournament (first example) or create new teams (second example).
+For tournaments with a group stage (`"group_stage": true`) an additional `"group"` parameter, specifying the group as an integer, is required for each team.
 
 #### Parameters
 
 Parameter   | Description | Default
 ---------   | ----------- | -------
 name        | Name of the tournament |
-teams       | Teams to create/add to the tournament (In case of group_stage add a group identifier to each team, if there is none, everyone will be in one big group) |
+teams       | Teams to create/add to the tournament |
 description | Description of the tournament | `''`
 public      | Whether the tournament is public (`true` or `false`) | `true`
 group_stage  | Whether the tournament will start with a group stage (`true` or `false`) | `false`
-
 
 ## Update a tournament
 
