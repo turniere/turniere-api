@@ -560,6 +560,91 @@ Content-Type: application/json
 
 Matches belonging to a private tournament can only be viewed by the owner of that tournament.
 
+## Start a Match
+
+Starting a Match is only available when the matches current state is 'not_started'.
+
+```http
+PATCH /matches/1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "state": "in_progress",
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": 1,
+  "match_scores": [
+    {
+      "id": 1,
+      "points": 2,
+      "team": {
+        "id": 1,
+        "name": "Snape"
+      }
+    },
+    {
+      "id": 2,
+      "points": 7,
+      "team": {
+        "id": 2,
+        "name": "Potter"
+      }
+    }
+  ],
+  "position": 0,
+  "state": "in_progress"
+}
+```
+
+## End a Match
+
+Stopping a match is only available if the matches current state is 'in_progress'.
+Stopping a match will result in the match below being filled with the winning team / the group points being recalculated.
+
+```http
+PATCH /matches/1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "state": "finished",
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": 1,
+  "match_scores": [
+    {
+      "id": 1,
+      "points": 2,
+      "team": {
+        "id": 1,
+        "name": "Snape"
+      }
+    },
+    {
+      "id": 2,
+      "points": 7,
+      "team": {
+        "id": 2,
+        "name": "Potter"
+      }
+    }
+  ],
+  "position": 0,
+  "state": "finished"
+}
+```
+
 # Match Scores
 
 ## Show a match score
