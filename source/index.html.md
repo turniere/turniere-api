@@ -602,6 +602,12 @@ Content-Type: application/json
 }
 ```
 
+### Parameters
+
+Parameter   | Value
+---------   | -----------
+state       | 'in_progress'
+
 ## End a Match
 
 Stopping a match is only available if the matches current state is 'in_progress'.
@@ -644,6 +650,12 @@ Content-Type: application/json
   "state": "finished"
 }
 ```
+
+### Parameters
+
+Parameter   | Value
+---------   | -----------
+state       | 'finished'
 
 # Match Scores
 
