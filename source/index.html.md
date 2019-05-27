@@ -579,26 +579,18 @@ Content-Type: application/json
 
 {
   "id": 1,
+  "state": "in_progress",
+  "position": 2,
   "match_scores": [
     {
-      "id": 1,
-      "points": 2,
-      "team": {
-        "id": 1,
-        "name": "Snape"
-      }
+      "id": 17,
+      "points": 0
     },
     {
-      "id": 2,
-      "points": 7,
-      "team": {
-        "id": 2,
-        "name": "Potter"
-      }
+      "id": 18,
+      "points": 0
     }
-  ],
-  "position": 0,
-  "state": "in_progress"
+  ]
 }
 ```
 
@@ -628,26 +620,18 @@ Content-Type: application/json
 
 {
   "id": 1,
+  "state": "finished",
+  "position": 2,
   "match_scores": [
     {
-      "id": 1,
-      "points": 2,
-      "team": {
-        "id": 1,
-        "name": "Snape"
-      }
+      "id": 17,
+      "points": 0
     },
     {
-      "id": 2,
-      "points": 7,
-      "team": {
-        "id": 2,
-        "name": "Potter"
-      }
+      "id": 18,
+      "points": 0
     }
-  ],
-  "position": 0,
-  "state": "finished"
+  ]
 }
 ```
 
