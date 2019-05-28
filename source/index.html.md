@@ -348,6 +348,65 @@ Request a detailed Tournament object.
 This will include all available attributes and relations.
 Public tournaments can be requested by anyone, private tournaments only by their owner.
 
+## Show tournament statistics
+
+```http
+GET /tournaments/1/statistics HTTP/1.1
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "most_dominant_score": {
+    "id": 1,
+    "group_points": 1,
+    "received_points": 0,
+    "scored_points": 100,
+    "team": {
+      "id": 69,
+      "name": "Zoe"
+    }
+  },
+  "least_dominant_score": {
+    "id": 2,
+    "group_points": 0,
+    "received_points": 100,
+    "scored_points": 0,
+    "team": {
+      "id": 76,
+      "name": "Jasper"
+    }
+  },
+  "group_scores": [
+    {
+      "id": 1,
+      "group_points": 1,
+      "received_points": 0,
+      "scored_points": 100,
+      "team": {
+        "id": 69,
+        "name": "Zoe"
+      }
+    },
+    {
+      "id": 2,
+      "group_points": 0,
+      "received_points": 100,
+      "scored_points": 0,
+      "team": {
+        "id": 76,
+        "name": "Jasper"
+      }
+    }
+  ]
+}
+```
+
+Retrieve a list of group scores for tournaments with a group stage.  
+Additionally calculate a most (most `scored_points`) and least (most `received_points`) dominant team.
+
 ## Create a tournament
 
 ```http
