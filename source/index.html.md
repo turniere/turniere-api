@@ -196,6 +196,45 @@ Parameter | Description
 email     | Updated mail address
 username  | Updated username
 
+## Change Password
+
+```http
+PUT /users/1/password HTTP/1.1
+Content-Type: application/json
+
+{
+  "current_password": "password"
+  "password": "P@ssw0rd"
+  "password_confirmation": "P@ssw0rd"
+}
+
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": 23,
+  "email": "john@gmail.com",
+  "provider": "email",
+  "username": "JohnTheBoy",
+  "uid": "john@gmail.com",
+  "allow_password_change": true,
+  "created_at": "2019-06-04T10:08:28.838Z",
+  "updated_at": "2019-06-04T10:10:39.027Z"
+}
+
+```
+
+### Parameters
+
+Parameter             | Description
+----------------------|------------
+current_password      | current/old password
+password              | The new password
+password_confirmation | The new password again to prevent typos
+
 # Tournaments
 
 ## List tournaments
