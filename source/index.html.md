@@ -199,7 +199,7 @@ username  | Updated username
 ## Change Password
 
 ```http
-PUT /users/1/password HTTP/1.1
+PUT /users/password HTTP/1.1
 Content-Type: application/json
 
 {
