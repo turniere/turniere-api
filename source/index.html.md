@@ -162,7 +162,8 @@ PUT /users HTTP/1.1
 Content-Type: application/json
 
 {
-  "email": "new@email.com"
+  "email": "new@email.com",
+  "username": "newusername"
 }
 
 ```
@@ -184,11 +185,16 @@ Content-Type: application/json
 
 ```
 
+Update user account.
+
+Parameters can be omitted as needed.
+
 ### Parameters
 
 Parameter | Description
 ----------|------------
 email     | Updated mail address
+username  | Updated username
 
 # Tournaments
 
