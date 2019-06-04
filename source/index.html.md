@@ -176,7 +176,7 @@ Content-Type: application/json
   "id": 1,
   "email": "new@email.com",
   "provider": "email",
-  "username": "user01",
+  "username": "newusername",
   "uid": "new@email.com",
   "allow_password_change": false,
   "created_at": "2019-05-13T10:07:21.228Z",
