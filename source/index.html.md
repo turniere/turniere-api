@@ -463,6 +463,7 @@ Content-Type: application/json
   "description": "An interesting description",
   "public": false,
   "group_stage": false,
+  "playoff_teams_amount": 4,
   "teams": [
     {
       "id": 1
@@ -501,6 +502,8 @@ You can either reuse teams from an existing tournament (first example) or create
 
 For tournaments with a group stage (`"group_stage": true`) an additional `"group"` parameter, specifying the group as an integer, is required for each team.
 
+**Parameters without default value are required!**
+
 #### Parameters
 
 Parameter   | Description | Default
@@ -510,6 +513,7 @@ teams       | Teams to create/add to the tournament |
 description | Description of the tournament | `''`
 public      | Whether the tournament is public (`true` or `false`) | `true`
 group_stage  | Whether the tournament will start with a group stage (`true` or `false`) | `false`
+playoff_teams_amount | (only required for tournaments with group stage) <br> The amount of teams that advance to playoff stage after group stage <br> (1 < playoff_teams_amount < amount of teams) |
 
 ## Update a tournament
 
