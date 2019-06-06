@@ -279,110 +279,99 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "code": "184c4a",
-  "description": null,
-  "id": 1,
-  "name": "Shadow",
-  "owner_username": "eric_kunze",
+  "id": 3,
+  "name": "Erics Wonderland",
+  "code": "e177f3",
   "public": true,
+  "description": "Here we go: Erics third wonderland tournament.",
+  "owner_username": "eric_kunze",
   "stages": [
     {
-      "groups": [],
-      "id": 1,
-      "level": null,
+      "id": 7,
+      "level": 1,
       "matches": [
         {
-          "id": 1,
+          "id": 15,
+          "state": "not_started",
+          "position": 0,
+          "winner": null,
           "match_scores": [
             {
-              "id": 1,
+              "id": 23,
               "points": 0,
               "team": {
-                "id": 1,
-                "name": "Gracie"
+                "id": 17,
+                "name": "Barambo"
               }
             },
             {
-              "id": 2,
-              "points": 1,
+              "id": 24,
+              "points": 0,
               "team": {
-                "id": 2,
-                "name": "Misty"
+                "id": 18,
+                "name": "Kurumba"
               }
             }
-          ],
-          "position": null,
-          "state": "single_team"
-        }
-      ]
-    },
-    {
-      "groups": [
+          ]
+        },
         {
-          "group_scores": [
+          "id": 16,
+          "state": "not_started",
+          "position": 1,
+          "winner": null,
+          "match_scores": [
             {
-              "group_points": 0,
-              "id": 1,
-              "received_points": 0,
-              "scored_points": 0,
+              "id": 25,
+              "points": 0,
               "team": {
-                "id": 1,
-                "name": "Gracie"
+                "id": 19,
+                "name": "Gatego"
               }
             },
             {
-              "group_points": 0,
-              "id": 2,
-              "received_points": 0,
-              "scored_points": 0,
+              "id": 26,
+              "points": 0,
               "team": {
-                "id": 2,
-                "name": "Misty"
+                "id": 20,
+                "name": "Tentiku"
               }
             }
-          ],
-          "id": 1,
-          "matches": [
-            {
-              "id": 2,
-              "match_scores": [
-                {
-                  "id": 3,
-                  "points": 0,
-                  "team": {
-                    "id": 1,
-                    "name": "Gracie"
-                  }
-                },
-                {
-                  "id": 4,
-                  "points": 1,
-                  "team": {
-                    "id": 2,
-                    "name": "Misty"
-                  }
-                }
-              ],
-              "position": null,
-              "state": "single_team"
-            }
-          ],
-          "number": null
+          ]
         }
       ],
-      "id": 2,
-      "level": null,
-      "matches": []
+      "groups": []
+    },
+    {
+      "id": 8,
+      "level": 0,
+      "matches": [
+        {
+          "id": 17,
+          "state": "not_ready",
+          "position": 0,
+          "winner": null,
+          "match_scores": []
+        }
+      ],
+      "groups": []
     }
   ],
   "teams": [
     {
-      "id": 1,
-      "name": "Gracie"
+      "id": 17,
+      "name": "Barambo"
     },
     {
-      "id": 2,
-      "name": "Misty"
+      "id": 18,
+      "name": "Kurumba"
+    },
+    {
+      "id": 19,
+      "name": "Gatego"
+    },
+    {
+      "id": 20,
+      "name": "Tentiku"
     }
   ]
 }
