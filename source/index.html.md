@@ -289,6 +289,7 @@ Content-Type: application/json
     {
       "id": 7,
       "level": 1,
+      "state": "playoff_stage",
       "matches": [
         {
           "id": 15,
@@ -344,6 +345,7 @@ Content-Type: application/json
     {
       "id": 8,
       "level": 0,
+      "state": "playoff_stage",
       "matches": [
         {
           "id": 17,
@@ -507,12 +509,12 @@ playoff_teams_amount | (only required for tournaments with group stage) <br> The
 ## Update a tournament
 
 ```http
-PATCH /tournaments/1 HTTP/1.1
+PATCH /tournaments/3 HTTP/1.1
 Content-Type: application/json
 
 {
-  "name": "New name",
-  "description": "New description",
+  "name": "Erics VERY NICE Wonderland",
+  "description": "Here we go: Erics third wonderland tournament. Forgot this sentence..",
   "public": false
 }
 ```
@@ -522,30 +524,40 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "id": 1,
-  "name": "Abby222",
-  "code": "184c4a",
+  "id": 3,
+  "name": "Erics VERY NICE Wonderland",
+  "code": "e177f3",
   "public": false,
-  "description": "Lorem ipsum dolor sit222",
-  "owner_username": "jonny321",
+  "description": "Here we go: Erics third wonderland tournament. Forgot this sentence..",
+  "owner_username": "eric_kunze",
   "stages": [
     {
-      "id": 1,
-      "level": null
+      "id": 7,
+      "level": 1,
+      "state": "playoff_stage"
     },
     {
-      "id": 2,
-      "level": null
+      "id": 8,
+      "level": 0,
+      "state": "playoff_stage"
     }
   ],
   "teams": [
     {
-      "id": 1,
-      "name": "Gracie"
+      "id": 17,
+      "name": "Barambo"
     },
     {
-      "id": 2,
-      "name": "Misty"
+      "id": 18,
+      "name": "Kurumba"
+    },
+    {
+      "id": 19,
+      "name": "Gatego"
+    },
+    {
+      "id": 20,
+      "name": "Tentiku"
     }
   ]
 }
@@ -796,4 +808,3 @@ points    | Updated points
 <aside class="warning">
 This resource is currently not implemented.
 </aside>
-
