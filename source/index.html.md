@@ -940,3 +940,60 @@ Content-Type: application/json
 <aside class="warning">
 This resource is currently not implemented.
 </aside>
+
+# Bets
+
+## Create a bet
+
+```http
+POST /matches/1/bets HTTP/1.1
+Content-Type: application/json
+
+{
+  "team": 1
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "team": {
+
+  }
+}
+```
+
+### Parameters
+
+Parameter | Description
+--------- | -----------
+team      | ID of the target team for the bet
+
+## List bets
+
+```http
+GET /matches/1/bets HTTP/1.1
+Content-Type: application/json
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+[
+  {
+    "team": {
+
+    },
+    "bets": 42
+  },
+  {
+    "team": {
+
+    },
+    "bets": 84
+  }
+]
+```
