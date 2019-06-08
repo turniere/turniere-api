@@ -971,7 +971,7 @@ Content-Type: application/json
 
 Parameter | Description
 --------- | -----------
-team      | ID of the target team
+team      | ID of the target team **or `null` to bet on undecided**
 
 ## List bets for a match
 
@@ -997,6 +997,10 @@ Content-Type: application/json
       "name": "Rocky"
     },
     "bets": 84
+  },
+  {
+    "team": null, /* undecided */
+    "bets": 168
   }
 ]
 ```
