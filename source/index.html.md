@@ -959,8 +959,10 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "team": {
-
+  "id": 1,
+  "team": { 
+    "id": 1,
+    "name": "Bubba"
   }
 }
 ```
@@ -969,13 +971,12 @@ Content-Type: application/json
 
 Parameter | Description
 --------- | -----------
-team      | ID of the target team for the bet
+team      | ID of the target team
 
-## List bets
+## List bets for a match
 
 ```http
 GET /matches/1/bets HTTP/1.1
-Content-Type: application/json
 ```
 
 ```http
@@ -985,15 +986,46 @@ Content-Type: application/json
 [
   {
     "team": {
-
+      "id": 1,
+      "name": "Bubba"
     },
     "bets": 42
   },
   {
     "team": {
-
+      "id": 2,
+      "name": "Rocky"
     },
     "bets": 84
   }
 ]
 ```
+
+## List bets for a tournament
+
+```http
+GET /tournaments/1/statistics HTTP/1.1
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  ...
+  "bets": [
+    {
+      "username": "user01",
+      "correct": 10,
+      "incorrect": 0
+    },
+    {
+      "username": "user02",
+      "correct": 0,
+      "incorrect": 10
+    }
+  ]
+}
+```
+
+As an addition to statistics specified [here](#show-tournament-statistics) the endpoint also returns information about bets.
