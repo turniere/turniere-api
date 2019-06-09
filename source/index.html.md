@@ -1017,18 +1017,24 @@ Content-Type: application/json
 
 {
   ...
-  "bets": [
-    {
-      "username": "user01",
+  "bets": {
+    "current_user": { /* assuming user01 is the current user */
       "correct": 10,
       "incorrect": 0
     },
-    {
-      "username": "user02",
-      "correct": 0,
-      "incorrect": 10
-    }
-  ]
+    "all": [
+      {
+        "username": "user01",
+        "correct": 10,
+        "incorrect": 0
+      },
+      {
+        "username": "user02",
+        "correct": 0,
+        "incorrect": 10
+      }
+    ] 
+  }
 }
 ```
 
