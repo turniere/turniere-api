@@ -504,7 +504,7 @@ teams       | Teams to create/add to the tournament |
 description | Description of the tournament | `''`
 public      | Whether the tournament is public (`true` or `false`) | `true`
 group_stage  | Whether the tournament will start with a group stage (`true` or `false`) | `false`
-playoff_teams_amount | (only required for tournaments with group stage) <br> The amount of teams that advance to playoff stage after group stage <br> (1 < playoff_teams_amount < amount of teams) |
+playoff_teams_amount | _(only required for tournaments with group stage)_ <br> The amount of teams that play in the first playoff stage after group stage <br> This needs to be a positive power of two (1,2,4,8,16,..) and <= the amount of teams |
 
 ## Update a tournament
 
@@ -574,6 +574,12 @@ Parameter   | Description
 name        | Name of the tournament
 description | Description of the tournament
 public      | Whether the tournament is public (`true` or `false`)
+playoff_teams_amount | _(only relevant for tournaments with group stage)_ <br> The amount of teams that play in the first playoff stage after group stage <br> This needs to be a positive power of two (1,2,4,8,16,..) and <= the amount of teams <br> Updating this will overwrite instant_finalists_amount and intermediate_round_participants_amount
+instant_finalists_amount | _(only relevant for tournaments with group stage)_ <br> The amount of teams that advance into playoffs instantly after group stage
+intermediate_round_participants_amount | _(only relevant for tournaments with group stage)_ <br> The amount of teams that need to play an intermediate round before advancing to playoffs
+
+The last three need to fit together such that 
+playoff_teams_amount = instant_finalists_amount + (intermediate_round_participants_amount / 2)
 
 ## Delete a tournament
 
