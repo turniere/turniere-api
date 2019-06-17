@@ -940,3 +940,102 @@ Content-Type: application/json
 <aside class="warning">
 This resource is currently not implemented.
 </aside>
+
+# Bets
+
+## Create a bet
+
+```http
+POST /matches/1/bets HTTP/1.1
+Content-Type: application/json
+
+{
+  "team": 1
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": 1,
+  "team": { 
+    "id": 1,
+    "name": "Bubba"
+  }
+}
+```
+
+### Parameters
+
+Parameter | Description
+--------- | -----------
+team      | ID of the target team **or `null` to bet on undecided**
+
+## List bets for a match
+
+```http
+GET /matches/1/bets HTTP/1.1
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+[
+  {
+    "team": {
+      "id": 1,
+      "name": "Bubba"
+    },
+    "bets": 42
+  },
+  {
+    "team": {
+      "id": 2,
+      "name": "Rocky"
+    },
+    "bets": 84
+  },
+  {
+    "team": null, /* undecided */
+    "bets": 168
+  }
+]
+```
+
+## List bets for a tournament
+
+```http
+GET /tournaments/1/statistics HTTP/1.1
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  ...
+  "bets": {
+    "current_user": { /* assuming user01 is the current user */
+      "correct": 10,
+      "incorrect": 0
+    },
+    "all": [
+      {
+        "username": "user01",
+        "correct": 10,
+        "incorrect": 0
+      },
+      {
+        "username": "user02",
+        "correct": 0,
+        "incorrect": 10
+      }
+    ] 
+  }
+}
+```
+
+As an addition to statistics specified [here](#show-tournament-statistics) the endpoint also returns information about bets.
