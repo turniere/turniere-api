@@ -937,9 +937,448 @@ Content-Type: application/json
 
 # Stages
 
-<aside class="warning">
-This resource is currently not implemented.
-</aside>
+## Show a stage
+
+```http
+GET /stages/1 HTTP/1.1
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": 1,
+  "level": -1,
+  "state": "in_progress",
+  "matches": [],
+  "groups": [
+    {
+      "id": 1,
+      "number": null,
+      "matches": [
+        {
+          "id": 1,
+          "state": "not_started",
+          "position": 0,
+          "winner": null,
+          "match_scores": [
+            {
+              "id": 1,
+              "points": 0,
+              "team": {
+                "id": 1,
+                "name": "bobo"
+              }
+            },
+            {
+              "id": 2,
+              "points": 0,
+              "team": {
+                "id": 2,
+                "name": "baba"
+              }
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "state": "not_started",
+          "position": 1,
+          "winner": null,
+          "match_scores": [
+            {
+              "id": 3,
+              "points": 0,
+              "team": {
+                "id": 1,
+                "name": "bobo"
+              }
+            },
+            {
+              "id": 4,
+              "points": 0,
+              "team": {
+                "id": 3,
+                "name": "bubu"
+              }
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "state": "not_started",
+          "position": 2,
+          "winner": null,
+          "match_scores": [
+            {
+              "id": 5,
+              "points": 0,
+              "team": {
+                "id": 1,
+                "name": "bobo"
+              }
+            },
+            {
+              "id": 6,
+              "points": 0,
+              "team": {
+                "id": 4,
+                "name": "bebe"
+              }
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "state": "not_started",
+          "position": 3,
+          "winner": null,
+          "match_scores": [
+            {
+              "id": 7,
+              "points": 0,
+              "team": {
+                "id": 2,
+                "name": "baba"
+              }
+            },
+            {
+              "id": 8,
+              "points": 0,
+              "team": {
+                "id": 3,
+                "name": "bubu"
+              }
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "state": "not_started",
+          "position": 4,
+          "winner": null,
+          "match_scores": [
+            {
+              "id": 9,
+              "points": 0,
+              "team": {
+                "id": 2,
+                "name": "baba"
+              }
+            },
+            {
+              "id": 10,
+              "points": 0,
+              "team": {
+                "id": 4,
+                "name": "bebe"
+              }
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "state": "not_started",
+          "position": 5,
+          "winner": null,
+          "match_scores": [
+            {
+              "id": 11,
+              "points": 0,
+              "team": {
+                "id": 3,
+                "name": "bubu"
+              }
+            },
+            {
+              "id": 12,
+              "points": 0,
+              "team": {
+                "id": 4,
+                "name": "bebe"
+              }
+            }
+          ]
+        }
+      ],
+      "group_scores": [
+        {
+          "id": 1,
+          "group_points": 0,
+          "received_points": 0,
+          "scored_points": 0,
+          "team": {
+            "id": 1,
+            "name": "bobo"
+          }
+        },
+        {
+          "id": 2,
+          "group_points": 0,
+          "received_points": 0,
+          "scored_points": 0,
+          "team": {
+            "id": 2,
+            "name": "baba"
+          }
+        },
+        {
+          "id": 3,
+          "group_points": 0,
+          "received_points": 0,
+          "scored_points": 0,
+          "team": {
+            "id": 3,
+            "name": "bubu"
+          }
+        },
+        {
+          "id": 4,
+          "group_points": 0,
+          "received_points": 0,
+          "scored_points": 0,
+          "team": {
+            "id": 4,
+            "name": "bebe"
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "number": null,
+      "matches": [
+        {
+          "id": 7,
+          "state": "not_started",
+          "position": 0,
+          "winner": null,
+          "match_scores": [
+            {
+              "id": 13,
+              "points": 0,
+              "team": {
+                "id": 5,
+                "name": "lolo"
+              }
+            },
+            {
+              "id": 14,
+              "points": 0,
+              "team": {
+                "id": 6,
+                "name": "lulu"
+              }
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "state": "not_started",
+          "position": 1,
+          "winner": null,
+          "match_scores": [
+            {
+              "id": 15,
+              "points": 0,
+              "team": {
+                "id": 5,
+                "name": "lolo"
+              }
+            },
+            {
+              "id": 16,
+              "points": 0,
+              "team": {
+                "id": 7,
+                "name": "lala"
+              }
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "state": "not_started",
+          "position": 2,
+          "winner": null,
+          "match_scores": [
+            {
+              "id": 17,
+              "points": 0,
+              "team": {
+                "id": 5,
+                "name": "lolo"
+              }
+            },
+            {
+              "id": 18,
+              "points": 0,
+              "team": {
+                "id": 8,
+                "name": "lele"
+              }
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "state": "not_started",
+          "position": 3,
+          "winner": null,
+          "match_scores": [
+            {
+              "id": 19,
+              "points": 0,
+              "team": {
+                "id": 6,
+                "name": "lulu"
+              }
+            },
+            {
+              "id": 20,
+              "points": 0,
+              "team": {
+                "id": 7,
+                "name": "lala"
+              }
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "state": "not_started",
+          "position": 4,
+          "winner": null,
+          "match_scores": [
+            {
+              "id": 21,
+              "points": 0,
+              "team": {
+                "id": 6,
+                "name": "lulu"
+              }
+            },
+            {
+              "id": 22,
+              "points": 0,
+              "team": {
+                "id": 8,
+                "name": "lele"
+              }
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "state": "not_started",
+          "position": 5,
+          "winner": null,
+          "match_scores": [
+            {
+              "id": 23,
+              "points": 0,
+              "team": {
+                "id": 7,
+                "name": "lala"
+              }
+            },
+            {
+              "id": 24,
+              "points": 0,
+              "team": {
+                "id": 8,
+                "name": "lele"
+              }
+            }
+          ]
+        }
+      ],
+      "group_scores": [
+        {
+          "id": 5,
+          "group_points": 0,
+          "received_points": 0,
+          "scored_points": 0,
+          "team": {
+            "id": 5,
+            "name": "lolo"
+          }
+        },
+        {
+          "id": 6,
+          "group_points": 0,
+          "received_points": 0,
+          "scored_points": 0,
+          "team": {
+            "id": 6,
+            "name": "lulu"
+          }
+        },
+        {
+          "id": 7,
+          "group_points": 0,
+          "received_points": 0,
+          "scored_points": 0,
+          "team": {
+            "id": 7,
+            "name": "lala"
+          }
+        },
+        {
+          "id": 8,
+          "group_points": 0,
+          "received_points": 0,
+          "scored_points": 0,
+          "team": {
+            "id": 8,
+            "name": "lele"
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+## Update a stage
+
+```http
+PATCH /stages/1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "state": 'finished'
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": 1,
+  "level": -1,
+  "state": "in_progress",
+  "matches": [],
+  "groups": [
+    {
+      "id": 1,
+      "number": null
+    },
+    {
+      "id": 2,
+      "number": null
+    }
+  ]
+}
+```
+
+### Parameters
+
+Parameter | Description
+--------- | -----------
+state    | Desired State (only used to stop group stages and trigger playoff generation by doing so)
 
 # Bets
 
