@@ -809,6 +809,132 @@ Parameter | Description
 --------- | -----------
 points    | Updated points
 
+# Groups
+
+## Show a group
+
+Groups belonging to a private tournament can only be viewed by the owner of that tournament.
+
+```http
+GET /groups/7 HTTP/1.1
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": 7,
+  "number": 4,
+  "matches": [
+    {
+      "id": 47,
+      "state": "not_started",
+      "position": 0,
+      "winner": null,
+      "match_scores": [
+        {
+          "id": 82,
+          "points": 0,
+          "team": {
+            "id": 37,
+            "name": "John"
+          }
+        },
+        {
+          "id": 83,
+          "points": 0,
+          "team": {
+            "id": 38,
+            "name": "Tom"
+          }
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "state": "not_started",
+      "position": 1,
+      "winner": null,
+      "match_scores": [
+        {
+          "id": 84,
+          "points": 0,
+          "team": {
+            "id": 37,
+            "name": "John"
+          }
+        },
+        {
+          "id": 85,
+          "points": 0,
+          "team": {
+            "id": 39,
+            "name": "Simon"
+          }
+        }
+      ]
+    },
+    {
+      "id": 49,
+      "state": "not_started",
+      "position": 2,
+      "winner": null,
+      "match_scores": [
+        {
+          "id": 86,
+          "points": 0,
+          "team": {
+            "id": 38,
+            "name": "Tom"
+          }
+        },
+        {
+          "id": 87,
+          "points": 0,
+          "team": {
+            "id": 39,
+            "name": "Simon"
+          }
+        }
+      ]
+    }
+  ],
+  "group_scores": [
+    {
+      "id": 23,
+      "group_points": 0,
+      "received_points": 0,
+      "scored_points": 0,
+      "team": {
+        "id": 37,
+        "name": "John"
+      }
+    },
+    {
+      "id": 24,
+      "group_points": 0,
+      "received_points": 0,
+      "scored_points": 0,
+      "team": {
+        "id": 38,
+        "name": "Tom"
+      }
+    },
+    {
+      "id": 25,
+      "group_points": 0,
+      "received_points": 0,
+      "scored_points": 0,
+      "team": {
+        "id": 39,
+        "name": "Simon"
+      }
+    }
+  ]
+}
+```
+
 # Stages
 
 <aside class="warning">
